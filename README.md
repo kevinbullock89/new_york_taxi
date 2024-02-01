@@ -96,7 +96,9 @@ In this Airflow DAG TLC_Trip_Record the parquet files are loaded into a mysql ta
    - The pipeline can be started manually in Airflow [localhost:8080 VS Code port forwarding](http://localhost:8080/dags/TLC_Trip_Record/grid)
    - It took almost two and a half hours to load the 12 parquet files.
    - In Airflow it is easy to monitor the progress of the data pipeline
-   - A Pipeline DAG Run in Airflow can be found in the screenshot DAG_RUN.png
+
+![DAG_RUN](https://github.com/kevinbullock89/new_york_taxi/assets/126856865/941e5064-00ad-41d9-88a5-16622b7f6ad4)
+
 
 ## Data Model
 
@@ -243,11 +245,13 @@ In this section, I show the data model created and analyze the loaded data:
 
 There are currently 30.904.308 rows in the table.
 
+![count](https://github.com/kevinbullock89/new_york_taxi/assets/126856865/412f1c32-dfd4-4fd2-8edd-f29758118c71)
+
+
 ```sh
     select count(*) from f_taxidata;
 ``` 
 
-The screenshot can be found in the count.png file.
 
 This SQL script retrieves aggregated statistics from a table named f_taxidata. It calculates the total fare amount, total passenger count, total travel time in hours, average travel time per passenger in hours, and average travel time per passenger in minutes for each month and year. The results are grouped by month and year of the pickup datetime and ordered in ascending order based on the year and month. 
 
@@ -269,10 +273,16 @@ This SQL script retrieves aggregated statistics from a table named f_taxidata. I
 The result shows that there are problems with the data quality. The result is stored in the Exploring_Data.png file. It shows us that there are taxi drives that have not been driven as expected in 2021. Particularly strange are those that are to be driven in the future.
 
 
-2. **Data Model Description:**
-   - The data model in Power can be found in the file PowerBI_Data_Model.pn. There is one fact table and six dimension table, these always have an m:1 relationship, which is optimal for analyses.
+![Exploring_Data](https://github.com/kevinbullock89/new_york_taxi/assets/126856865/9016ac26-9abb-45e9-be74-3345e2627176)
 
+
+
+2. **Data Model Description:**
+   - There is one fact table and six dimension table, these always have an m:1 relationship, which is optimal for analyses.
    - This model allows you to create complex reports in Power BI
+  
+![PowerBI_Data_Model](https://github.com/kevinbullock89/new_york_taxi/assets/126856865/d495a6be-9be5-4e1a-a42b-ba15e1c5aad8)
+ 
 
 ## Possible Next Steps
 
